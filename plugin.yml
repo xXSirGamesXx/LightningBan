@@ -1,0 +1,15 @@
+name: ExamplePlugin
+main: PocketEssential\ExamplePlugin\ExamplePlugin
+api: 1.0.0
+version: 1.0.0
+description: "Plugin skeleton"
+
+commands:
+  example:
+    description: "example command description"
+    permission: example.permission
+
+permissions:
+  example.permission:
+    default: true # true = anyone can use the command, false = no one can use the command and op = only opped players can use the command
+    description: "Example permission description"
