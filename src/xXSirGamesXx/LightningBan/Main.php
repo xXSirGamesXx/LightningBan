@@ -7,6 +7,8 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\event\player\PlayerCommandPreprocessEvent;
+use pocketmine\utils\TextFormat as C;
 
 class Main extends PluginBase implements Listener {
 	
@@ -16,16 +18,19 @@ class Main extends PluginBase implements Listener {
 	
 	public function onEnable() {
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
-		$this->getLogger()->info("Plugin enabled!");
+		$this->getLogger()->info(C::GOLD . "LightningBan by xXSirGamesXx enabled!");
 	}
 	
 	public function onDisable() {
-		$this->getLogger()->info("Plugin disabled!");
+		$this->getLogger()->info(C::GOLD . "LightningBan by xXSirGamesXx enabled!");
 	}
 	
-	public function onCommand(CommandSender $sender, Command $cmd, $label, array $args) {
-		if($cmd->getName() == "ban") {
-			$sender->sendMessage("W.I.P.");
-		}
-	}	
+   public function Commands(PlayerCommandPreprocessEvent $event) {
+       $cmd = explode(" ", strtolower($event->getMessage()));
+	   $player = $event->getPlayer();
+	   if($cmd[0] === "/ban"){
+		   $player->sendMessage(C::RED . "This Plugin Is useless atm");
+		   //$event->setCancelled();
+	   }
+   }	   
 }
