@@ -1,5 +1,5 @@
-name: Lightningban
-main: PocketEssential\ExamplePlugin\ExamplePlugin
+name: LightningBan
+main: xXSirGamesXx\LightningBan\Main
 api: 
 - 2.0.0
 - 3.0.0
