@@ -29,8 +29,10 @@ class Main extends PluginBase implements Listener {
        $cmd = explode(" ", strtolower($event->getMessage()));
 	   $player = $event->getPlayer();
 	   if($cmd[0] === "/ban"){
-		   $player->sendMessage(C::RED . "This Plugin Is useless atm");
-		   //$event->setCancelled();
+		  if($player->hasPermission{"pocketmine.command.ban"}){
+			  $player->sendMessage(C::RED . "This Plugin Is useless atm");
+			  //$event->setCancelled();
 	   }
+       }
    }	   
 }
