@@ -50,8 +50,8 @@ class Main extends PluginBase implements Listener {
 								$light->speedX = 0;
 								$light->speedY = 0;
 								$light->speedZ = 0;
-								$light->yaw = $p->getYaw();
-								$light->pitch = $p->getPitch();
+								$light->yaw = $target->getYaw();
+								$light->pitch = $target->getPitch();
 								$light->x = $target->x;
 								$light->y = $target->y;
 								$light->z = $target->z;
