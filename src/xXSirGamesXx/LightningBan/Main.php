@@ -10,6 +10,8 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\utils\TextFormat as C;
 use pocketmine\math\Vector3;
+use pocketmine\entity\Entity;
+use pocketmine\network\mcpe\protocol\AddEntityPacket;
 
 class Main extends PluginBase implements Listener {
 	const PREFIX = C::GOLD . "[LB] " . C::WHITE;
@@ -39,7 +41,23 @@ class Main extends PluginBase implements Listener {
 							if($target != null){
 								$sender->sendMessage(self::PREFIX . "You banned $args[0]");
 								$target->getLevel()->addSound(new ThunderStartSound($target));
-								sleep(2);
+								sleep(3);
+								$level = $target->getLevel();
+								$light = new AddEntityPacket();
+								$light->type = 93;
+								$light->entityRuntimeId = Entity::$entityCount++;
+								$light->metadata = array();
+								$light->speedX = 0;
+								$light->speedY = 0;
+								$light->speedZ = 0;
+								$light->yaw = $p->getYaw();
+								$light->pitch = $p->getPitch();
+								$light->x = $target->x;
+								$light->y = $target->y;
+								$light->z = $target->z;
+								foreach($level->getPlayers() as $pl){
+									$pl->dataPacket($light);
+									} 								
 								$target->setBanned(true);
 								}else{
 									$sender->sendMessage(self::PREFIX . "Player doesnt exist or isnt online, use /ban to ban players that aren't online.");
