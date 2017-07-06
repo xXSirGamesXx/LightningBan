@@ -1,6 +1,6 @@
 <?php
 
-namespace pocketmine\level\sound;
+namespace xXSirGamesXx\LightningBan\sound;
 
 use pocketmine\level\sound\Sound;
 use pocketmine\level\sound\GenericSound;
