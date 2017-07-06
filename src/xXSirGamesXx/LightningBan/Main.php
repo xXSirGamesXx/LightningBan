@@ -2,6 +2,7 @@
 	
 namespace xXSirGamesXx\LightningBan; 
 
+use xXSirGamesXx\LightningBan\sound\ThunderStartSound;
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
@@ -38,7 +39,7 @@ class Main extends PluginBase implements Listener {
 							if($target != null){
 								$sender->sendMessage(self::PREFIX . "You banned $args[0]");
 								$target->getLevel()->addSound(new ThunderStartSound($target));
-								//sleep(2);
+								sleep(2);
 								$target->setBanned(true);
 								}else{
 									$sender->sendMessage(self::PREFIX . "Player doesnt exist or isnt online, use /ban to ban players that aren't online.");
